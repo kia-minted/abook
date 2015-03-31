@@ -1,0 +1,29 @@
+{
+  "name": "abook",
+  "version": "1.0.0",
+  "description": "DI Address Book Prototype",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kia-minted/abook.git"
+  },
+  "author": "Kia Fathi",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kia-minted/abook/issues"
+  },
+  "homepage": "https://github.com/kia-minted/abook",
+  "dependencies": {
+    "flux": "^2.0.1",
+    "object-assign": "^2.0.0",
+    "react": "^0.13.1"
+  },
+  "devDependencies": {
+    "babel-eslint": "^2.0.2",
+    "eslint-plugin-react": "^2.0.1",
+    "webpack": "^1.7.3"
+  }
+}

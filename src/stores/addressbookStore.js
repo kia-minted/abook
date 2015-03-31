@@ -28,7 +28,24 @@ var AddressbookStore = assign(new EventEmitter(), {
     var action = payload.action;
 
     if(action.actionType === AppConstants.RECEIVE_SERVER_DATA){
-      _state = action.data;
+      _state = assign(_state, action.data);
+      AddressbookStore.emitChange();
+    }
+
+    if(action.actionType === AppConstants.ADD_EMAIL){
+      var newEmail = action.data;
+      //TODO: ID SHOULD COME FROM SERVER
+      newEmail.id = _state.friendEmails.length+1;
+      _state.friendEmails.push(newEmail);
+      AddressbookStore.emitChange();
+    }
+
+    if(action.actionType === AppConstants.EDIT_EMAIL){
+      var updatedEmail = action.data;
+      var targetEmail = _state.friendEmails.filter(function(email){
+        return email.id === updatedEmail.id
+      })[0];
+      targetEmail = assign(targetEmail, updatedEmail);
       AddressbookStore.emitChange();
     }
 

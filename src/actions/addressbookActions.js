@@ -6,14 +6,26 @@ var AddressbookConstants = require('../constants/addressbookConstants.js');
 var AddressbookActions = {
   fetchServerData: function(){
     //TODO: Rig up actual server querying!
-    AddressbookActions.receiveServerData();
+    AddressbookActions.receiveServerData(serverData);
   },
-  receiveServerData: function(){
+  receiveServerData: function(response){
     AddressbookDispatcher.handleServerAction({
       actionType: AddressbookConstants.RECEIVE_SERVER_DATA,
-      data: serverData
+      data: response
     });
-  }
+  },
+  addEmail: function(email){
+    AddressbookDispatcher.handleViewAction({
+      actionType: AddressbookConstants.ADD_EMAIL,
+      data: email
+    });
+  },
+  editEmail: function(email){
+    AddressbookDispatcher.handleViewAction({
+      actionType: AddressbookConstants.EDIT_EMAIL,
+      data: email
+    });
+  },
 };
 
 export default AddressbookActions;

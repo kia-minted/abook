@@ -7,7 +7,12 @@ const CHANGE_EVENT = 'change';
 
 var _state = {
   friendEmails: [],
-  friendAddresses: []
+  friendAddresses: [],
+  displayType: 'email',
+  filterBy: 'name',
+  filterMatch: '',
+  isSelectable: true,
+  selectedAddresses: []
 };
 
 
@@ -46,6 +51,25 @@ var AddressbookStore = assign(new EventEmitter(), {
         return email.id === updatedEmail.id
       })[0];
       targetEmail = assign(targetEmail, updatedEmail);
+      AddressbookStore.emitChange();
+    }
+
+    if(action.actionType === AppConstants.SELECT_EMAIL){
+      var selectedId = action.emailId;
+      var selectedEmail = _state.friendEmails
+      .filter(function(email){
+        return email.id === selectedId
+      })[0];
+      _state.selectedAddresses.push(selectedEmail)
+      AddressbookStore.emitChange();
+    }
+
+    if(action.actionType === AppConstants.DESELECT_EMAIL){
+      var deselectId = action.emailId;
+      _state.selectedAddresses = _state.selectedAddresses
+        .filter(function(address){
+          return address.id !== deselectId;
+        });
       AddressbookStore.emitChange();
     }
 

@@ -6,4 +6,6 @@ module.exports = keyMirror({
   EDIT_EMAIL: null,
   DELETE_EMAIL: null,
   ADD_ADDRESS: null,
+  SELECT_EMAIL: null,
+  DESELECT_EMAIL: null
 });

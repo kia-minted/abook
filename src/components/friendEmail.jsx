@@ -7,6 +7,7 @@ var EditableField = require('./common/editablField.jsx');
 export default class FriendEmail extends React.Component {
   constructor(props) {
     super(props);
+    console.log(props);
     this.state = props;
   }
   toggleEdit(e){
@@ -24,6 +25,14 @@ export default class FriendEmail extends React.Component {
     e.preventDefault();
     AddressbookActions.editEmail(this.state);
     this.toggleEdit();
+  }
+  toggleSelect(){
+    var id = this.props.id;
+    if(this.props.isSelected){
+      AddressbookActions.deselectEmail(id);
+    } else {
+      AddressbookActions.selectEmail(id);
+    }
   }
   render() {
     var divStyle = {border: '1px solid green'};
@@ -46,8 +55,17 @@ export default class FriendEmail extends React.Component {
       <a onClick={this.toggleEdit.bind(this)} href=''>Edit</a>
     </div>
     );
+    var selectableContent = this.props.isSelectable ?(
+      <input 
+        type='checkbox' 
+        onChange={this.toggleSelect.bind(this)} 
+        value={this.props.isSelected}
+      />
+      ): '';
+
     return (
       <div style={divStyle}>
+        {selectableContent}
         {children}
       </div>
     );
@@ -57,4 +75,11 @@ export default class FriendEmail extends React.Component {
 FriendEmail.propTypes = {
   email: React.PropTypes.string.isRequired,
   name: React.PropTypes.string.isRequired,
+  isSelectable: React.PropTypes.bool.isRequired,
+  isSelected: React.PropTypes.bool
+};
+
+FriendEmail.defaultProps = {
+  isSelectable: false,
+  isSelected: false
 };

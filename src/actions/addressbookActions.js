@@ -26,6 +26,18 @@ var AddressbookActions = {
       data: email
     });
   },
+  selectEmail: function(id){
+    AddressbookDispatcher.handleViewAction({
+      actionType: AddressbookConstants.SELECT_EMAIL,
+      emailId: id
+    });
+  },
+  deselectEmail: function(id){
+    AddressbookDispatcher.handleViewAction({
+      actionType: AddressbookConstants.DESELECT_EMAIL,
+      emailId: id
+    });
+  }
 };
 
 export default AddressbookActions;

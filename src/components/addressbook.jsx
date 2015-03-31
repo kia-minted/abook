@@ -13,14 +13,11 @@ export default class Addressbook extends React.Component {
   }
   render() {
     console.log(this.state);
-    var divStyle = {border: '1px solid black'}
+    var divStyle = { border: '1px solid black' };
     return (
       <div style={divStyle}>Addressbook
         <AddressEntry/>
-        <AddressList
-          friendEmails={this.state.friendEmails}
-          friendAddresses={this.state.friendAddresses}
-        />
+        <AddressList {...this.state}/>
         <div>Guest List
           <div>Guest Counter</div>
           <div>Guests</div>

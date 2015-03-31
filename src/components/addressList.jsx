@@ -3,10 +3,6 @@ var React = require('react');
 var FriendEmail = require('./friendEmail.jsx');
 var AddressCounter = require('./addressCounter.jsx');
 
-function toProperCase(str){
-  return str[0].toUpperCase() + str.substring(1);
-}
-
 export default class AddressList extends React.Component {
   constructor(props) {
     super(props);

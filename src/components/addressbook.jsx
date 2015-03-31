@@ -3,6 +3,7 @@ var AddressbookStore = require('../stores/addressbookStore.js');
 var { friendEmails, friendAddresses } = require('../serverStub.js');
 var AddressList = require('./addressList.jsx');
 var AddressEntry = require('./addressEntry.jsx');
+var GuestList = require('./guestList.jsx');
 
 var { fetchServerData } = require('../actions/addressbookActions.js');
 
@@ -14,14 +15,14 @@ export default class Addressbook extends React.Component {
   render() {
     console.log(this.state);
     var divStyle = { border: '1px solid black' };
+    var guestList = this.state.hasGuestList ? (
+      <GuestList {...this.state}/>
+    ) : '';
     return (
       <div style={divStyle}>Addressbook
         <AddressEntry/>
         <AddressList {...this.state}/>
-        <div>Guest List
-          <div>Guest Counter</div>
-          <div>Guests</div>
-        </div>
+        {guestList}
       </div>
     );
   }
@@ -36,4 +37,3 @@ export default class Addressbook extends React.Component {
     this.setState(AddressbookStore.getState());
   }
 }
-

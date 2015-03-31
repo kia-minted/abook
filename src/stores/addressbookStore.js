@@ -11,6 +11,7 @@ var _state = {
   displayType: 'email',
   filterBy: 'name',
   filterMatch: '',
+  hasGuestList: true,
   isSelectable: true,
   selectedAddresses: []
 };

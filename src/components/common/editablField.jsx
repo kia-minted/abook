@@ -1,8 +1,7 @@
 var React = require('react');
 
-function toProperCase(str){
- return str[0].toUpperCase() + str.substring(1);
-}
+var { toProperCase } = require('../../utils.js');
+
 export default class EditableField extends React.Component {
   updateValue(e){
     var value = e.target.value;

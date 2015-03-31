@@ -16,7 +16,8 @@ export default class AddressCounter extends React.Component {
     var selectedCount = this.props.selectedAddresses ?
       this.props.selectedAddresses.length : 0;
     var selectableText = this.props.isSelectable ?
-      `${selectedCount} out of ${totalAddressCount} selected` : '';
+      `${selectedCount} of ${totalAddressCount} selected` :
+      `${totalAddressCount} total`;
     return (
       <div style={divStyle}>Address Counter
         <h3>YOUR {addressType} ADDRESSES:{' '}<small>{selectableText}</small></h3>

@@ -7,7 +7,6 @@ var EditableField = require('./common/editablField.jsx');
 export default class FriendEmail extends React.Component {
   constructor(props) {
     super(props);
-    console.log(props);
     this.state = props;
   }
   toggleEdit(e){
@@ -56,9 +55,9 @@ export default class FriendEmail extends React.Component {
     </div>
     );
     var selectableContent = this.props.isSelectable ?(
-      <input 
-        type='checkbox' 
-        onChange={this.toggleSelect.bind(this)} 
+      <input
+        type='checkbox'
+        onChange={this.toggleSelect.bind(this)}
         value={this.props.isSelected}
       />
       ): '';

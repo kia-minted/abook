@@ -1,5 +1,7 @@
 var React = require('react');
 
+var { getLastName } = require('../../utils.js');
+
 var FriendEmail = require('./friendEmail.jsx');
 var AddressCounter = require('./addressCounter.jsx');
 var AlphabetPicker = require('./alphabetPicker.jsx');
@@ -46,7 +48,8 @@ export default class AddressList extends React.Component {
     //filtering
     if(this.props.filterMatch && this.props.filterBy === 'lastName'){
       filteredAddresses = displayAddresses.filter(function(address){
-        return address.props.name.match(new RegExp(this.props.filterMatch,'gi'));
+        var lastName = getLastName(address.props.name);
+        return lastName[0].match(new RegExp(this.props.filterMatch,'i'));
       }.bind(this));
     } else {
       filteredAddresses = displayAddresses;

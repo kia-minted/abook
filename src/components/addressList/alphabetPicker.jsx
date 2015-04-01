@@ -1,5 +1,7 @@
 var React = require('react');
+
 var AddressbookActions = require('../../actions/addressbookActions.js');
+
 var { getLastName } = require('../../utils.js');
 
 export default class AlphabetPicker extends React.Component {
@@ -38,7 +40,7 @@ export default class AlphabetPicker extends React.Component {
     }.bind(this));
 
     return (
-      <div>AlphabetPicker
+      <div>
         {letters}
       </div>
     );

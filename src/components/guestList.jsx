@@ -1,7 +1,8 @@
 var React = require('react');
-var EditableField = require('./common/editablField.jsx');
+
 var AddressbookActions = require('../actions/addressbookActions.js');
 
+var Guest = require('./guest.jsx');
 
 export default class GuestList extends React.Component {
   constructor(props) {
@@ -14,15 +15,8 @@ export default class GuestList extends React.Component {
   render(){
     var divStyle = { border: '1px solid purple' };
     var guests = this.props.selectedAddresses.map(function(address, index){
-      var addressName = Boolean(address.name) ? address.name: address.email;
       return (
-        <p key={index}>{addressName}
-          <EditableField
-            field='displayName'
-            value={address.displayName}
-            update={this.editAddress.bind(this, address)}
-          />
-        </p>
+        <Guest key={index} {...address}/>
       );
     }.bind(this));
     var noGuestsMessage = (

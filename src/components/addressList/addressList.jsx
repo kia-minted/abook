@@ -41,7 +41,7 @@ export default class AddressList extends React.Component {
         .map(function(email, index){
           return (
             <FriendEmail
-              isSelected={selectedAddresses.indexOf(email.id) >= 0}
+              isSelected={selectedAddresses.indexOf(email) >= 0}
               key={'FriendEmail#' + email.id + index}
               isSelectable={this.props.isSelectable} {...email}/>
           );

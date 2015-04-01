@@ -19,8 +19,8 @@ export function removeLastName(name){
 }
 
 export function compareByLastName(reactAddress1, reactAddress2){
-  var lastName1 = getLastName(reactAddress1.props.name);
-  var lastName2 = getLastName(reactAddress2.props.name);
+  var lastName1 = getLastName(reactAddress1.props.name).toUpperCase();
+  var lastName2 = getLastName(reactAddress2.props.name).toUpperCase();
   if(lastName1 < lastName2){ return -1; }
   if(lastName1 > lastName2){ return 1; }
   return 0;

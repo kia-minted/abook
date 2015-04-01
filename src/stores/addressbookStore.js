@@ -72,15 +72,15 @@ var AddressbookStore = assign(new EventEmitter(), {
       .filter(function(email){
         return email.id === selectedId;
       })[0];
-      _state.selectedAddresses.push(selectedEmail.id);
+      _state.selectedAddresses.push(selectedEmail);
       AddressbookStore.emitChange();
     }
 
     if(action.actionType === AppConstants.DESELECT_EMAIL){
       var deselectId = action.emailId;
       _state.selectedAddresses = _state.selectedAddresses
-        .filter(function(addressId){
-          return addressId !== deselectId;
+        .filter(function(address){
+          return address.id !== deselectId;
         });
       AddressbookStore.emitChange();
     }

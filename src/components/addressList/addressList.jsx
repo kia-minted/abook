@@ -1,6 +1,6 @@
 var React = require('react');
 
-var { getLastName } = require('../../utils.js');
+var { getLastName, compareByLastName, compareByIsSelected } = require('../../utils.js');
 
 var FriendEmail = require('./friendEmail.jsx');
 var AddressCounter = require('./addressCounter.jsx');
@@ -74,13 +74,13 @@ export default class AddressList extends React.Component {
     //sorting
     //TODO: Sorting should be done here
     if(this.props.sortBy === 'name'){
-      filteredAddresses = filteredAddresses.sort(function(address1, address2){
-        var lastName1 = getLastName(address1.props.name);
-        var lastName2 = getLastName(address2.props.name);
-        if(lastName1 < lastName2) return -1;
-        if(lastName1 > lastName2) return 1;
-        return 0;
-      });
+      console.log('sorting by name');
+      filteredAddresses = filteredAddresses.sort(compareByLastName);
+    } else if(this.props.sortBy === 'selected'){
+      console.log('sorting by selected');
+      filteredAddresses = filteredAddresses
+        .sort(compareByLastName)
+        .sort(compareByIsSelected);
     }
 
     var divStyle = {border: '1px solid yellow'};
@@ -99,5 +99,5 @@ export default class AddressList extends React.Component {
   }
 }
 
-AddressList.propTypes = propTypes; 
+AddressList.propTypes = propTypes;
 AddressList.defaultProps = defaultProps;

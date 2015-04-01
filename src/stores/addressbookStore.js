@@ -21,7 +21,7 @@ var _state = {
   filterMatch: '',
 
   //sorting state
-  sortBy: 'name'
+  sortBy: 'selected'
 
 };
 

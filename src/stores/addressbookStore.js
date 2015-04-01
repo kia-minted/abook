@@ -9,7 +9,7 @@ var _state = {
   friendEmails: [],
   friendAddresses: [],
   displayType: 'email',
-  filterBy: 'name',
+  filterBy: 'lastName',
   filterMatch: '',
   hasGuestList: true,
   isSelectable: true,
@@ -49,7 +49,7 @@ var AddressbookStore = assign(new EventEmitter(), {
     if(action.actionType === AppConstants.EDIT_EMAIL){
       var updatedEmail = action.data;
       var targetEmail = _state.friendEmails.filter(function(email){
-        return email.id === updatedEmail.id
+        return email.id === updatedEmail.id;
       })[0];
       targetEmail = assign(targetEmail, updatedEmail);
       AddressbookStore.emitChange();
@@ -59,9 +59,9 @@ var AddressbookStore = assign(new EventEmitter(), {
       var selectedId = action.emailId;
       var selectedEmail = _state.friendEmails
       .filter(function(email){
-        return email.id === selectedId
+        return email.id === selectedId;
       })[0];
-      _state.selectedAddresses.push(selectedEmail)
+      _state.selectedAddresses.push(selectedEmail);
       AddressbookStore.emitChange();
     }
 
@@ -71,6 +71,15 @@ var AddressbookStore = assign(new EventEmitter(), {
         .filter(function(address){
           return address.id !== deselectId;
         });
+      AddressbookStore.emitChange();
+    }
+
+    if(action.actionType === AppConstants.FILTER_BY_LETTER){
+      console.log(_state.filterMatch);
+      _state.filterMatch = action.letter === _state.filterMatch ?
+        '' :
+        action.letter;
+      console.log(_state);
       AddressbookStore.emitChange();
     }
 

@@ -37,6 +37,12 @@ var AddressbookActions = {
       actionType: AddressbookConstants.DESELECT_EMAIL,
       emailId: id
     });
+  },
+  filterByLetter: function(letter){
+    AddressbookDispatcher.handleViewAction({
+      actionType: AddressbookConstants.FILTER_BY_LETTER,
+      letter: letter
+    });
   }
 };
 

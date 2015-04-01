@@ -2,6 +2,7 @@ var React = require('react');
 
 var FriendEmail = require('./friendEmail.jsx');
 var AddressCounter = require('./addressCounter.jsx');
+var AlphabetPicker = require('./alphabetPicker.jsx');
 
 export default class AddressList extends React.Component {
   constructor(props) {
@@ -19,9 +20,8 @@ export default class AddressList extends React.Component {
           return (
             <FriendEmail
               isSelected={selectedAddresses.indexOf(email) >= 0}
-              key={'FriendEmail#' + email.id}
-              isSelectable={this.props.isSelectable} {...email}
-            />
+              key={'FriendEmail#' + email.id + index}
+              isSelectable={this.props.isSelectable} {...email}/>
           );
         }.bind(this));
     }
@@ -29,16 +29,27 @@ export default class AddressList extends React.Component {
     if(this.props.displayType === 'all' || this.props.displayType === 'address'){
       friendAddresses = this.props.friendAddresses
         .map(function(address, index){
-          return (<li key={'FriendAddress#' + address.id}>{address.name}</li>);
+          return (
+            <li key={'FriendAddress#' + address.id + index}>
+              {address.name}
+            </li>
+          );
         });
     }
     displayAddresses = friendEmails.concat(friendAddresses);
-    var divStyle = {border: '1px solid yellow'}
+    if(this.props.filterMatch || this.props.filterBy === 'lastName'){
+      displayAddresses = displayAddresses.filter(function(address){
+        console.log(address);
+        return address.props.name.match(new RegExp(this.props.filterMatch,'gi'));
+      }.bind(this));
+    }
+
+    var divStyle = {border: '1px solid yellow'};
     return (
       <div style={divStyle}>Address List
         <AddressCounter displayAddresses={displayAddresses} {...this.props}/>
         <div>Search Bar</div>
-        <div>Alphabet Picker</div>
+        <AlphabetPicker displayAddresses={displayAddresses}/>
         <ul>Addresses
           {displayAddresses}
         </ul>

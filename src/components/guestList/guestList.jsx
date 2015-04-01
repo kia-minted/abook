@@ -1,6 +1,6 @@
 var React = require('react');
 
-var AddressbookActions = require('../actions/addressbookActions.js');
+var AddressbookActions = require('../../actions/addressbookActions.js');
 
 var Guest = require('./guest.jsx');
 
@@ -18,7 +18,7 @@ export default class GuestList extends React.Component {
       return (
         <Guest key={index} {...address}/>
       );
-    }.bind(this));
+    });
     var noGuestsMessage = (
       <div>
         <p>You have not added any guests yet.</p>

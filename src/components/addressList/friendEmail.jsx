@@ -1,8 +1,8 @@
 var React = require('react');
 
-var AddressbookActions = require('../actions/addressbookActions.js');
+var AddressbookActions = require('../../actions/addressbookActions.js');
 
-var EditableField = require('./common/editablField.jsx');
+var EditableField = require('../common/editablField.jsx');
 
 export default class FriendEmail extends React.Component {
   constructor(props) {

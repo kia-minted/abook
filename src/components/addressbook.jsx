@@ -1,9 +1,9 @@
 var React = require('react');
 var AddressbookStore = require('../stores/addressbookStore.js');
 var { friendEmails, friendAddresses } = require('../serverStub.js');
-var AddressList = require('./addressList.jsx');
+var AddressList = require('./addressList/addressList.jsx');
 var AddressEntry = require('./addressEntry.jsx');
-var GuestList = require('./guestList.jsx');
+var GuestList = require('./guestList/guestList.jsx');
 
 var { fetchServerData } = require('../actions/addressbookActions.js');
 

@@ -1,6 +1,6 @@
 var React = require('react');
 
-var EditableField = require('./common/editablField.jsx');
+//var EditableField = require('../common/editablField.jsx');
 
 export default class Guest extends React.Component {
   constructor(props) {

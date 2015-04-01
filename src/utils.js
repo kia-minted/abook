@@ -7,5 +7,13 @@ module.exports = {
       }
       return letter;
     }).join('');
+  },
+  getLastName: function(name){
+    var nameArr = name.split(' ');
+    return nameArr[nameArr.length - 1];
+  },
+  removeLastName: function(name){
+    var nameArr = name.split(' ');
+    return nameArr.slice(0, -1).join(' ');
   }
-}
+};

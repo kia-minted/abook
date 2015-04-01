@@ -75,11 +75,8 @@ var AddressbookStore = assign(new EventEmitter(), {
     }
 
     if(action.actionType === AppConstants.FILTER_BY_LETTER){
-      console.log(_state.filterMatch);
       _state.filterMatch = action.letter === _state.filterMatch ?
-        '' :
-        action.letter;
-      console.log(_state);
+        '' : action.letter;
       AddressbookStore.emitChange();
     }
 

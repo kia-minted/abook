@@ -13,7 +13,9 @@ export default class AddressList extends React.Component {
     var friendEmails = [];
     var friendAddresses = [];
     var displayAddresses;
+    var filteredAddresses;
 
+    //creating FriendEmails
     if(this.props.displayType === 'all' || this.props.displayType === 'email'){
       friendEmails = this.props.friendEmails
         .map(function(email, index){
@@ -26,6 +28,7 @@ export default class AddressList extends React.Component {
         }.bind(this));
     }
 
+    //creating FriendAddresses
     if(this.props.displayType === 'all' || this.props.displayType === 'address'){
       friendAddresses = this.props.friendAddresses
         .map(function(address, index){
@@ -36,22 +39,32 @@ export default class AddressList extends React.Component {
           );
         });
     }
+
+    //concatting addresses into one array
     displayAddresses = friendEmails.concat(friendAddresses);
-    if(this.props.filterMatch || this.props.filterBy === 'lastName'){
-      displayAddresses = displayAddresses.filter(function(address){
-        console.log(address);
+
+    //filtering
+    if(this.props.filterMatch && this.props.filterBy === 'lastName'){
+      filteredAddresses = displayAddresses.filter(function(address){
         return address.props.name.match(new RegExp(this.props.filterMatch,'gi'));
       }.bind(this));
+    } else {
+      filteredAddresses = displayAddresses;
     }
+
+    //sorting
+    //TODO: Sorting should be done here
 
     var divStyle = {border: '1px solid yellow'};
     return (
       <div style={divStyle}>Address List
         <AddressCounter displayAddresses={displayAddresses} {...this.props}/>
         <div>Search Bar</div>
-        <AlphabetPicker displayAddresses={displayAddresses}/>
+        <AlphabetPicker
+          displayAddresses={displayAddresses}
+          filterMatch={this.props.filterMatch}/>
         <ul>Addresses
-          {displayAddresses}
+          {filteredAddresses}
         </ul>
       </div>
     );

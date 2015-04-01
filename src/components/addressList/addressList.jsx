@@ -6,6 +6,22 @@ var FriendEmail = require('./friendEmail.jsx');
 var AddressCounter = require('./addressCounter.jsx');
 var AlphabetPicker = require('./alphabetPicker.jsx');
 
+var propTypes = {
+  friendAddresses: React.PropTypes.array.isRequired,
+  friendEmails: React.PropTypes.array.isRequired,
+  displayType: React.PropTypes.string.isRequired,
+  filterBy: React.PropTypes.string.isRequired,
+  filterMatch: React.PropTypes.string.isRequired,
+  isSelectable: React.PropTypes.bool.isRequired,
+  selectedAddresses: React.PropTypes.array,
+  sortBy: React.PropTypes.string.isRequired,
+};
+
+var defaultProps = {
+  isSelectable: false,
+  selectedAddresses: []
+};
+
 export default class AddressList extends React.Component {
   constructor(props) {
     super(props);
@@ -57,6 +73,15 @@ export default class AddressList extends React.Component {
 
     //sorting
     //TODO: Sorting should be done here
+    if(this.props.sortBy === 'name'){
+      filteredAddresses = filteredAddresses.sort(function(address1, address2){
+        var lastName1 = getLastName(address1.props.name);
+        var lastName2 = getLastName(address2.props.name);
+        if(lastName1 < lastName2) return -1;
+        if(lastName1 > lastName2) return 1;
+        return 0;
+      });
+    }
 
     var divStyle = {border: '1px solid yellow'};
     return (
@@ -74,17 +99,5 @@ export default class AddressList extends React.Component {
   }
 }
 
-AddressList.propTypes = {
-  friendAddresses: React.PropTypes.array.isRequired,
-  friendEmails: React.PropTypes.array.isRequired,
-  displayType: React.PropTypes.string.isRequired,
-  filterBy: React.PropTypes.string.isRequired,
-  filterMatch: React.PropTypes.string.isRequired,
-  isSelectable: React.PropTypes.bool.isRequired,
-  selectedAddresses: React.PropTypes.array
-};
-
-AddressList.defaultProps = {
-  isSelectable: false,
-  selectedAddresses: []
-};
+AddressList.propTypes = propTypes; 
+AddressList.defaultProps = defaultProps;

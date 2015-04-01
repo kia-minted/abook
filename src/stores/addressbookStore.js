@@ -6,14 +6,23 @@ var assign = require('object-assign');
 const CHANGE_EVENT = 'change';
 
 var _state = {
-  friendEmails: [],
-  friendAddresses: [],
-  displayType: 'email',
-  filterBy: 'lastName',
-  filterMatch: '',
+  //properties of the addresbook instance
   hasGuestList: true,
   isSelectable: true,
-  selectedAddresses: []
+  displayType: 'email',
+
+  //data sent to and from server
+  friendEmails: [],
+  friendAddresses: [],
+  selectedAddresses: [],
+
+  //filtering state
+  filterBy: 'lastName',
+  filterMatch: '',
+
+  //sorting state
+  sortBy: 'name'
+
 };
 
 

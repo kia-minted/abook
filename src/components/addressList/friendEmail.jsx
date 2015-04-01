@@ -1,5 +1,7 @@
 var React = require('react');
 
+var { getLastName, removeLastName } = require('../../utils.js');
+
 var AddressbookActions = require('../../actions/addressbookActions.js');
 
 var EditableField = require('../common/editablField.jsx');
@@ -50,7 +52,11 @@ export default class FriendEmail extends React.Component {
     </div>
     ):(
     <div>
-      <p>{this.state.name}{' '}{this.state.email}</p>
+      <p>
+        {removeLastName(this.state.name)}{' '}
+        <strong>{getLastName(this.state.name)}</strong>
+        {' '}{this.state.email}
+      </p>
       <a onClick={this.toggleEdit.bind(this)} href=''>Edit</a>
     </div>
     );

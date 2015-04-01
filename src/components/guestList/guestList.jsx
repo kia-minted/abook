@@ -2,6 +2,8 @@ var React = require('react');
 
 var AddressbookActions = require('../../actions/addressbookActions.js');
 
+var { compareByLastName } = require('../../utils.js');
+
 var Guest = require('./guest.jsx');
 
 export default class GuestList extends React.Component {
@@ -18,7 +20,7 @@ export default class GuestList extends React.Component {
       return (
         <Guest key={index} {...address}/>
       );
-    });
+    }).sort(compareByLastName);
     var noGuestsMessage = (
       <div>
         <p>You have not added any guests yet.</p>

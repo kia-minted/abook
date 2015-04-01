@@ -51,7 +51,6 @@ export default class FriendEmail extends React.Component {
     ):(
     <div>
       <p>{this.state.name}{' '}{this.state.email}</p>
-      <p>FOR DISPLAY PURPOSES ONLY {this.props.displayName}</p>
       <a onClick={this.toggleEdit.bind(this)} href=''>Edit</a>
     </div>
     );

@@ -15,5 +15,8 @@ module.exports = keyMirror({
   ADD_ADDRESS: null,
 
   //Filtering Actions
-  FILTER_BY_LETTER: null
+  FILTER_BY_LETTER: null,
+
+  //Sorting Actions
+  CHANGE_SORT_BY: null,
 });

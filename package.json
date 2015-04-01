@@ -19,7 +19,8 @@
   "dependencies": {
     "flux": "^2.0.1",
     "object-assign": "^2.0.0",
-    "react": "^0.13.1"
+    "react": "^0.13.1",
+    "react-select": "^0.4.5"
   },
   "devDependencies": {
     "babel-eslint": "^2.0.2",

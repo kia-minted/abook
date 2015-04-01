@@ -43,6 +43,19 @@ var AddressbookActions = {
       actionType: AddressbookConstants.FILTER_BY_LETTER,
       letter: letter
     });
+  },
+  changeSortBy: function(sortBy){
+    AddressbookDispatcher.handleViewAction({
+      actionType: AddressbookConstants.CHANGE_SORT_BY,
+      sortBy: sortBy
+    });
+  },
+
+  searchFor: function(searchField){
+    AddressbookDispatcher.handleViewAction({
+      actionType: AddressbookConstants.SEARCH_FOR,
+      searchField: searchField
+    });
   }
 };
 

@@ -21,8 +21,10 @@ var _state = {
   filterMatch: '',
 
   //sorting state
-  sortBy: 'selected'
+  sortBy: 'name',
 
+  //search state
+  searchField: ''
 };
 
 
@@ -70,15 +72,15 @@ var AddressbookStore = assign(new EventEmitter(), {
       .filter(function(email){
         return email.id === selectedId;
       })[0];
-      _state.selectedAddresses.push(selectedEmail);
+      _state.selectedAddresses.push(selectedEmail.id);
       AddressbookStore.emitChange();
     }
 
     if(action.actionType === AppConstants.DESELECT_EMAIL){
       var deselectId = action.emailId;
       _state.selectedAddresses = _state.selectedAddresses
-        .filter(function(address){
-          return address.id !== deselectId;
+        .filter(function(addressId){
+          return addressId !== deselectId;
         });
       AddressbookStore.emitChange();
     }
@@ -86,6 +88,17 @@ var AddressbookStore = assign(new EventEmitter(), {
     if(action.actionType === AppConstants.FILTER_BY_LETTER){
       _state.filterMatch = action.letter === _state.filterMatch ?
         '' : action.letter;
+      AddressbookStore.emitChange();
+    }
+
+    if(action.actionType === AppConstants.CHANGE_SORT_BY){
+      _state.sortBy = action.sortBy;
+      console.log(_state.sortBy);
+      AddressbookStore.emitChange();
+    }
+
+    if(action.actionType === AppConstants.SEARCH_FOR){
+      _state.searchField = action.searchField;
       AddressbookStore.emitChange();
     }
 

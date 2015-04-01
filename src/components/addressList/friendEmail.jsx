@@ -11,11 +11,16 @@ export default class FriendEmail extends React.Component {
     super(props);
     this.state = props;
   }
+  componentWillReceiveProps(nextProps){
+    this.setState(nextProps);
+  }
   toggleEdit(e){
     if(e){
       e.preventDefault();
     }
-    this.setState({isEditing: !this.state.isEditing});
+    this.setState({
+      isEditing: !this.state.isEditing
+    });
   }
   updateField(field, value){
     var newState = {};
@@ -24,8 +29,10 @@ export default class FriendEmail extends React.Component {
   }
   saveEdits(e){
     e.preventDefault();
+    var isEditing = !this.state.isEditing;
+    var newState = this.state;
+    newState.isEditing = false;
     AddressbookActions.editEmail(this.state);
-    this.toggleEdit();
   }
   toggleSelect(){
     var id = this.props.id;
@@ -64,7 +71,7 @@ export default class FriendEmail extends React.Component {
       <input
         type='checkbox'
         onChange={this.toggleSelect.bind(this)}
-        value={this.props.isSelected}
+        checked={this.props.isSelected}
       />
       ): '';
 

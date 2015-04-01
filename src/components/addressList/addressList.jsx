@@ -5,6 +5,7 @@ var { getLastName, compareByLastName, compareByIsSelected } = require('../../uti
 var FriendEmail = require('./friendEmail.jsx');
 var AddressCounter = require('./addressCounter.jsx');
 var AlphabetPicker = require('./alphabetPicker.jsx');
+var SearchBar = require('../searchBar/searchBar.jsx');
 
 var propTypes = {
   friendAddresses: React.PropTypes.array.isRequired,
@@ -15,6 +16,7 @@ var propTypes = {
   isSelectable: React.PropTypes.bool.isRequired,
   selectedAddresses: React.PropTypes.array,
   sortBy: React.PropTypes.string.isRequired,
+  searchField: React.PropTypes.string.isRequired,
 };
 
 var defaultProps = {
@@ -39,7 +41,7 @@ export default class AddressList extends React.Component {
         .map(function(email, index){
           return (
             <FriendEmail
-              isSelected={selectedAddresses.indexOf(email) >= 0}
+              isSelected={selectedAddresses.indexOf(email.id) >= 0}
               key={'FriendEmail#' + email.id + index}
               isSelectable={this.props.isSelectable} {...email}/>
           );
@@ -74,20 +76,33 @@ export default class AddressList extends React.Component {
     //sorting
     //TODO: Sorting should be done here
     if(this.props.sortBy === 'name'){
-      console.log('sorting by name');
       filteredAddresses = filteredAddresses.sort(compareByLastName);
     } else if(this.props.sortBy === 'selected'){
-      console.log('sorting by selected');
       filteredAddresses = filteredAddresses
         .sort(compareByLastName)
         .sort(compareByIsSelected);
+    }
+
+    //search functionality
+    filteredAddresses = filteredAddresses.filter(function(address){
+      return address.props.name.match(new RegExp(this.props.searchField, 'gi'));
+    }.bind(this));
+
+    if(!displayAddresses.length){
+      filteredAddresses = (
+        <p>You have not added any addresses! Add some!</p>
+      );
+    } else if(!filteredAddresses.length){
+      filteredAddresses = (
+        <p>No addresses match that search</p>
+      );
     }
 
     var divStyle = {border: '1px solid yellow'};
     return (
       <div style={divStyle}>Address List
         <AddressCounter displayAddresses={displayAddresses} {...this.props}/>
-        <div>Search Bar</div>
+        <SearchBar sortBy={this.props.sortBy}/>
         <AlphabetPicker
           displayAddresses={displayAddresses}
           filterMatch={this.props.filterMatch}/>

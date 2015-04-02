@@ -97,5 +97,4 @@ export default class FriendEmail extends React.Component {
 }
 
 FriendEmail.propTypes = propTypes;
-
 FriendEmail.defaultProps = defaultProps;

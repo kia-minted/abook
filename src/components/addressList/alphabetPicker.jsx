@@ -1,4 +1,5 @@
 var React = require('react');
+var classNames = require('classnames');
 
 var AddressbookActions = require('../../actions/addressbookActions.js');
 
@@ -29,8 +30,10 @@ export default class AlphabetPicker extends React.Component {
       } else {
         letterProps = AlphabetPicker.letterProperties.disabled;
       }
+      var letterCx = classNames('ABAlphabetPickerLetter');
       return (
         <a
+          className={letterCx}
           key={y}
           onClick={this.onLetterClick.bind(this, letter)}
           children={letter}
@@ -39,14 +42,16 @@ export default class AlphabetPicker extends React.Component {
 
     }.bind(this));
 
+    var cx = classNames('row', 'ABAlphabetPicker');
     return (
-      <div>
+      <div className={cx}>
         {letters}
       </div>
     );
   }
 }
 
+//TODO: Refactor these into css classes? atleast the style portions
 AlphabetPicker.letterProperties = {
   enabled: {
     style: {
@@ -66,6 +71,7 @@ AlphabetPicker.letterProperties = {
     style: {
       fontWeight: 'lighter',
       color: 'gray',
+      pointerEvents: 'none',
       cursor: 'default'
     },
     onClick: function(e){

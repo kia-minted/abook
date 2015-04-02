@@ -1,4 +1,5 @@
 node_modules
 public/bundle.js
+public/style.css
 coverage
 npm-debug.log

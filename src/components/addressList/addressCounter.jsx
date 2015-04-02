@@ -1,11 +1,11 @@
 var React = require('react');
+var classNames = require('classnames');
 
 export default class AddressCounter extends React.Component {
   constructor(props) {
     super(props);
   }
   render(){
-    var divStyle = {border: '1px solid orange'};
     var addressType = this.props.displayType !== 'all' ?
       this.props.displayType.toUpperCase() : '';
     var totalAddressCount = this.props.displayType === 'all' ?
@@ -18,9 +18,10 @@ export default class AddressCounter extends React.Component {
     var selectableText = this.props.isSelectable ?
       `${selectedCount} of ${totalAddressCount} selected` :
       `${totalAddressCount} total`;
+    var cx = classNames(['ABAddressCounter', 'row']);
     return (
-      <div style={divStyle}>Address Counter
-        <h3>YOUR {addressType} ADDRESSES:{' '}<small>{selectableText}</small></h3>
+      <div className={cx}>
+        <h4>YOUR {addressType} ADDRESSES:{' '}<small>{selectableText}</small></h4>
       </div>
     );
   }

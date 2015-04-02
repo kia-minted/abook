@@ -188,13 +188,13 @@ gulp.task('watch-html', function () {
 // with sourcemaps and not minified
 // ======================================
 gulp.task('build-sass:dev', function(){
-  gulp.src('./styles.scss')
+  gulp.src(paths.sass)
     .pipe(sourcemaps.init())
     .pipe(sass({
       errLogToConsole: true
     }))
     .pipe(sourcemaps.write())
-    .pipe(gulp.dest('./build'))
+    .pipe(gulp.dest('./public'))
     .pipe(connect.reload());
   gutil.log('[build-sass:dev]', ' Reloaded New SASS Assets in Browser');
 });
@@ -235,7 +235,7 @@ gulp.task('watch-and-build-js:dev', function() {
 // Minified, no source maps
 // ====================================
 gulp.task('build-sass:prod', function(){
-  gulp.src('./styles.scss')
+  gulp.src(paths.sass)
     .pipe(sass({
       errLogToConsole: true,
       outputStyle: 'compressed'

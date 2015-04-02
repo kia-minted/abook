@@ -1,5 +1,8 @@
 var React = require('react');
+var classNames = require('classnames');
+
 var AddressbookStore = require('../stores/addressbookStore.js');
+
 var AddressList = require('./addressList/addressList.jsx');
 var AddressEntry = require('./addressEntry.jsx');
 var GuestList = require('./guestList/guestList.jsx');
@@ -13,12 +16,13 @@ export default class Addressbook extends React.Component {
   }
   render() {
     console.log(this.state);
-    var divStyle = { border: '1px solid black' };
+    var cx = classNames(['AB', 'container']);
     var guestList = this.state.hasGuestList ? (
       <GuestList selectedAddresses={this.state.selectedAddresses}/>
     ) : '';
     return (
-      <div style={divStyle}>Addressbook
+      <div className={cx}>
+        <h4>Address Book</h4>
         <AddressEntry/>
         <AddressList {...this.state}/>
         {guestList}
@@ -26,11 +30,11 @@ export default class Addressbook extends React.Component {
     );
   }
   componentWillMount() {
-    AddressbookStore.addChangeListener(this._onChange.bind(this))
+    AddressbookStore.addChangeListener(this._onChange.bind(this));
     fetchServerData();
   }
   componentDidUnmount() {
-    AddressbookStore.removeChangeListener(this._onChange.bind(this))
+    AddressbookStore.removeChangeListener(this._onChange.bind(this));
   }
   _onChange() {
     this.setState(AddressbookStore.getState());

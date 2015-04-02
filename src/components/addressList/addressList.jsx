@@ -1,4 +1,5 @@
 var React = require('react');
+var classNames = require('classnames');
 
 var { getLastName, compareByLastName, compareByIsSelected } = require('../../utils.js');
 
@@ -53,9 +54,9 @@ export default class AddressList extends React.Component {
       friendAddresses = this.props.friendAddresses
         .map(function(address, index){
           return (
-            <li key={'FriendAddress#' + address.id + index}>
+            <div key={'FriendAddress#' + address.id + index}>
               {address.name}
-            </li>
+            </div>
           );
         });
     }
@@ -67,7 +68,7 @@ export default class AddressList extends React.Component {
     if(this.props.filterMatch && this.props.filterBy === 'lastName'){
       filteredAddresses = displayAddresses.filter(function(address){
         var lastName = getLastName(address.props.name);
-        return lastName[0].match(new RegExp(this.props.filterMatch,'i'));
+        return lastName[0].match(new RegExp(this.props.filterMatch, 'i'));
       }.bind(this));
     } else {
       filteredAddresses = displayAddresses;
@@ -90,25 +91,26 @@ export default class AddressList extends React.Component {
 
     if(!displayAddresses.length){
       filteredAddresses = (
-        <p>You have not added any addresses! Add some!</p>
+        <div>You have not added any addresses! Add some!</div>
       );
     } else if(!filteredAddresses.length){
       filteredAddresses = (
-        <p>No addresses match that search</p>
+        <div>No addresses match that search</div>
       );
     }
 
-    var divStyle = {border: '1px solid yellow'};
+    var cx = classNames(['ABAddressList', 'col-sm-6']);
+    var filteredAddressesCx = classNames(['ABAddressListFilteredAddresses', 'row']);
     return (
-      <div style={divStyle}>Address List
+      <div className={cx}>
         <AddressCounter displayAddresses={displayAddresses} {...this.props}/>
         <SearchBar sortBy={this.props.sortBy}/>
         <AlphabetPicker
           displayAddresses={displayAddresses}
           filterMatch={this.props.filterMatch}/>
-        <ul>Addresses
+        <div className={filteredAddressesCx}>
           {filteredAddresses}
-        </ul>
+        </div>
       </div>
     );
   }

@@ -1,4 +1,6 @@
 var React = require('react');
+var classNames = require('classnames');
+
 var AddressbookActions = require('../actions/addressbookActions.js');
 
 var EditableField = require('./common/editablField.jsx');
@@ -32,10 +34,13 @@ export default class AddressEntry extends React.Component {
     AddressbookActions.addEmail(newEmail);
   }
   render() {
-    var divStyle = {border: '1px solid red'};
+    var cx = classNames(['DIAddressEntry', 'row']);
+    var singleEntryCx = classNames(['col-sm-6']);
+    var multipleEntryCx = classNames(['col-sm-6']);
     return (
-      <div style={divStyle}>AddressEntry
-        <p>Single Entry
+      <div className={cx}>
+        <div className={singleEntryCx}>
+          <h5>ENTER A NEW CONTACT</h5>
           <EditableField field='name'
             value={this.state.name}
             update={this.updateField.bind(this)}
@@ -49,8 +54,11 @@ export default class AddressEntry extends React.Component {
             onClick={this.submitEmail.bind(this)}
             >Add
           </a>
-        </p>
-        <p>Multiple Entry</p>
+        </div>
+        <div className={multipleEntryCx}>
+          <h5>ENTER MULTIPLE CONTACTS AT ONCE</h5>
+          <p>TODO</p>
+        </div>
       </div>
     );
   }

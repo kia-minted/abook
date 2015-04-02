@@ -17,6 +17,9 @@
   },
   "homepage": "https://github.com/kia-minted/abook",
   "dependencies": {
+    "bootstrap": "^3.3.4",
+    "bootstrap-sass": "^3.3.4",
+    "classnames": "^1.2.0",
     "flux": "^2.0.1",
     "object-assign": "^2.0.0",
     "react": "^0.13.1"

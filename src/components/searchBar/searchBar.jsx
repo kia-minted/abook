@@ -1,4 +1,5 @@
 var React = require('react');
+var classNames = require('classnames');
 
 var AddressbookActions = require('../../actions/addressbookActions.js');
 
@@ -13,17 +14,19 @@ export default class SearchBar extends React.Component {
     AddressbookActions.searchFor(e.target.value);
   }
   render(){
-    var divStyle = { border: '1px solid purple' };
+    var cx = classNames('DIAddressBookSearchBar', 'row');
+    var searchFieldCx = classNames('col-sm-6');
+    var sortByCx = classNames('col-sm-6');
     return (
-      <div style={divStyle}>
-        <div>
+      <div className={cx}>
+        <div className={searchFieldCx}>
           <input
             type='text'
             value={this.props.searchField}
             onChange={this.updateSearchField.bind(this)}
             placeholder='Search names'/>
         </div>
-        <div>
+        <div className={sortByCx}>
           <span>Sort By
             <select
               value={this.props.sortBy}

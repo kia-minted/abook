@@ -6,9 +6,14 @@ var { compareByLastName } = require('../../utils.js');
 
 var Guest = require('./guest.jsx');
 
+const propTypes = {
+  selectedAddresses: React.PropTypes.array.isRequired
+}
+
 export default class GuestList extends React.Component {
   constructor(props) {
     super(props);
+    console.log(props);
   }
   editAddress(address, field, value){
     address[field] = value;
@@ -45,3 +50,4 @@ export default class GuestList extends React.Component {
   }
 }
 
+GuestList.propTypes = propTypes;

@@ -1,6 +1,5 @@
 var React = require('react');
 var AddressbookStore = require('../stores/addressbookStore.js');
-var { friendEmails, friendAddresses } = require('../serverStub.js');
 var AddressList = require('./addressList/addressList.jsx');
 var AddressEntry = require('./addressEntry.jsx');
 var GuestList = require('./guestList/guestList.jsx');
@@ -16,7 +15,7 @@ export default class Addressbook extends React.Component {
     console.log(this.state);
     var divStyle = { border: '1px solid black' };
     var guestList = this.state.hasGuestList ? (
-      <GuestList {...this.state}/>
+      <GuestList selectedAddresses={this.state.selectedAddresses}/>
     ) : '';
     return (
       <div style={divStyle}>Addressbook

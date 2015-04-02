@@ -32,7 +32,7 @@ export default class AddressEntry extends React.Component {
     AddressbookActions.addEmail(newEmail);
   }
   render() {
-    var divStyle= {border: '1px solid red'};
+    var divStyle = {border: '1px solid red'};
     return (
       <div style={divStyle}>AddressEntry
         <p>Single Entry

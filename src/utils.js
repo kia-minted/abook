@@ -1,7 +1,7 @@
 export function toProperCase(str){
   var newStr = str[0].toUpperCase() + str.substring(1);
-  return newStr.split('').map(function(letter){
-    if(letter.toUpperCase() === letter){
+  return newStr.split('').map(function(letter, index){
+    if(letter.toUpperCase() === letter && index !== 0){
       letter = ' ' + letter;
     }
     return letter;

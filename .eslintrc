@@ -9,6 +9,10 @@
   "globals": {
     "expect": true
   },
+  "settings": {
+    "ecmascript": 6,
+    "jsx": true
+  },
   "rules": {
     "strict": false,
     "new-cap": false,

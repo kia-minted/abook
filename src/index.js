@@ -1,10 +1,7 @@
-/*global React, Addressbook */
-import React from 'react';
+var React = require('react');
 
-import Addressbook from './components/addressbook.jsx';
+var Addressbook = require('./components/addressbook.jsx');
 
-var TARGET = 'targetId';
-var MOUNTNODE = document.getElementById(TARGET);
-
+var MOUNTNODE = document.body;
 
 React.render(<Addressbook/>, MOUNTNODE);

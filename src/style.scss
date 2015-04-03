@@ -53,6 +53,8 @@ body {
 .ABFriendEmail {
   border-bottom: 1px solid black;
   text-align: left;
+  overflow: hidden;
+  text-overflow: ellipsis;
   vertical-align: bottom;
   min-height: 50px;
   padding-top:10px;
@@ -69,6 +71,15 @@ body {
 
 .ABGuestListEntry {
   background-color: $ABCream;
+}
+.ABGuest {
+  border-bottom: 1px solid black;
+  text-align: left;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  vertical-align: bottom;
+  min-height: 50px;
+  padding-top:10px;
 }
 
 .ABMoveRight {

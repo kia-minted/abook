@@ -41,19 +41,25 @@ export default class AddressEntry extends React.Component {
       <div className={cx}>
         <div className={singleEntryCx}>
           <h5>ENTER A NEW CONTACT</h5>
-          <EditableField field='name'
-            value={this.state.name}
-            update={this.updateField.bind(this)}
-          />
-          <EditableField field='email'
-            value={this.state.email}
-            update={this.updateField.bind(this)}
-          />
+          <div className="medium-5 column">
+            <EditableField field='name'
+              value={this.state.name}
+              update={this.updateField.bind(this)}
+            />
+          </div>
+          <div className="medium-5 column">
+            <EditableField field='email'
+              value={this.state.email}
+              update={this.updateField.bind(this)}
+            />
+        </div>
+        <div className="medium-2 column">
           <a
             href=''
             onClick={this.submitEmail.bind(this)}
             >Add
           </a>
+        </div>
         </div>
         <div className={multipleEntryCx}>
           <h5>ENTER MULTIPLE CONTACTS AT ONCE</h5>

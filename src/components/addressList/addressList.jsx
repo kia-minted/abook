@@ -69,7 +69,7 @@ export default class AddressList extends React.Component {
     if(this.props.filterMatch && this.props.filterBy === 'lastName'){
       filteredAddresses = displayAddresses.filter(function(address){
         var lastName = getLastName(address.props.name);
-        return lastName[0].match(new RegExp(this.props.filterMatch, 'i'));
+        return lastName.match(new RegExp('^' + this.props.filterMatch, 'i'));
       }.bind(this));
     } else {
       filteredAddresses = displayAddresses;

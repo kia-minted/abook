@@ -50,7 +50,7 @@ describe('addressbookActions', function(){
       expect(module.receiveServerData).to.be.a('function');
     });
 
-    it('should trigger a serverAction with the correct arguments', function(){
+    it('should trigger a dispatch with the correct arguments', function(){
       var serverData = {Waz: 'Zup'};
       module.receiveServerData(serverData);
       expect(serverActionSpy.calledOnce).to.equal(true);
@@ -61,6 +61,135 @@ describe('addressbookActions', function(){
 
     });
   });
+
+  describe('addEmail', function(){
+    it('should be a function', function(){
+      expect(module.addEmail).to.be.a('function');
+    });
+
+    it('should trigger a dispatch with the correct arguments', function(){
+      var exEmail = 'im an email!';
+      module.addEmail(exEmail);
+      expect(viewActionSpy.calledOnce).to.equal(true);
+      expect(viewActionSpy.calledWith({
+        data: exEmail,
+        actionType: AddressbookConstants.ADD_EMAIL
+      })).to.equal(true);
+    });
+  });
+
+  describe('editEmail', function(){
+    it('should be a function', function(){
+      expect(module.editEmail).to.be.a('function');
+    });
+
+    it('should trigger a dispatch with the correct arguments', function(){
+      var exEmail = 'im an email!';
+      module.editEmail(exEmail);
+      expect(viewActionSpy.calledOnce).to.equal(true);
+      expect(viewActionSpy.calledWith({
+        data: exEmail,
+        actionType: AddressbookConstants.EDIT_EMAIL
+      })).to.equal(true);
+    });
+  });
+
+  describe('selectEmail', function(){
+    it('should be a function', function(){
+      expect(module.editEmail).to.be.a('function');
+    });
+
+    it('should trigger a dispatch with the correct arguments', function(){
+      var emailId = 1337;
+      module.selectEmail(emailId);
+      expect(viewActionSpy.calledOnce).to.equal(true);
+      expect(viewActionSpy.calledWith({
+        emailId: emailId,
+        actionType: AddressbookConstants.SELECT_EMAIL
+      })).to.equal(true);
+    });
+  });
+
+  describe('deselectEmail', function(){
+    it('should be a function', function(){
+      expect(module.deselectEmail).to.be.a('function');
+    });
+
+    it('should trigger a dispatch with the correct arguments', function(){
+      var emailId = 1337;
+      module.deselectEmail(emailId);
+      expect(viewActionSpy.calledOnce).to.equal(true);
+      expect(viewActionSpy.calledWith({
+        emailId: emailId,
+        actionType: AddressbookConstants.DESELECT_EMAIL
+      })).to.equal(true);
+    });
+  });
+
+  describe('deselectEmail', function(){
+    it('should be a function', function(){
+      expect(module.deselectEmail).to.be.a('function');
+    });
+
+    it('should trigger a dispatch with the correct arguments', function(){
+      var emailId = 1337;
+      module.deselectEmail(emailId);
+      expect(viewActionSpy.calledOnce).to.equal(true);
+      expect(viewActionSpy.calledWith({
+        emailId: emailId,
+        actionType: AddressbookConstants.DESELECT_EMAIL
+      })).to.equal(true);
+    });
+  });
+
+  describe('filterByLetter', function(){
+    it('should be a function', function(){
+      expect(module.filterByLetter).to.be.a('function');
+    });
+
+    it('should trigger a dispatch with the correct arguments', function(){
+      var letter = 'K';
+      module.filterByLetter(letter);
+      expect(viewActionSpy.calledOnce).to.equal(true);
+      expect(viewActionSpy.calledWith({
+        letter: letter,
+        actionType: AddressbookConstants.FILTER_BY_LETTER
+      })).to.equal(true);
+    });
+  });
+
+  describe('changeSortBy', function(){
+    it('should be a function', function(){
+      expect(module.changeSortBy).to.be.a('function');
+    });
+
+    it('should trigger a dispatch with the correct arguments', function(){
+      var letter = 'K';
+      module.changeSortBy(letter);
+      expect(viewActionSpy.calledOnce).to.equal(true);
+      expect(viewActionSpy.calledWith({
+        sortBy: letter,
+        actionType: AddressbookConstants.CHANGE_SORT_BY
+      })).to.equal(true);
+    });
+  });
+
+  describe('searchFor', function(){
+    it('should be a function', function(){
+      expect(module.searchFor).to.be.a('function');
+    });
+
+    it('should trigger a dispatch with the correct arguments', function(){
+      var letter = 'K';
+      module.searchFor(letter);
+      expect(viewActionSpy.calledOnce).to.equal(true);
+      expect(viewActionSpy.calledWith({
+        searchField: letter,
+        actionType: AddressbookConstants.SEARCH_FOR
+      })).to.equal(true);
+    });
+  });
+
   afterEach(function(){
     AddressbookDispatcher.handleServerAction.restore();
     AddressbookDispatcher.handleViewAction.restore();

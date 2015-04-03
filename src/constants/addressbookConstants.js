@@ -11,6 +11,9 @@ module.exports = keyMirror({
   SELECT_EMAIL: null,
   DESELECT_EMAIL: null,
 
+  //All Emails Actions
+  TOGGLE_SELECT_ALL: null,
+
   //Address Actions
   ADD_ADDRESS: null,
 

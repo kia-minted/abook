@@ -59,13 +59,13 @@ export default class FriendEmail extends React.Component {
     var children = this.state.isEditing ? (
       [
         <EditableField
-          key='name'
+          key={this.state.name}
           field='name'
           value={this.state.name}
           update={this.updateField.bind(this)}
         />,
         <EditableField field='email'
-          key='email'
+          key={this.state.email}
           value={this.state.email}
           update={this.updateField.bind(this)}
         />,

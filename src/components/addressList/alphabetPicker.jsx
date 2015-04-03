@@ -14,7 +14,7 @@ export default class AlphabetPicker extends React.Component {
     AddressbookActions.filterByLetter(letter);
   }
   onCheckboxClick(e){
-    e.preventDefault();
+    AddressbookActions.toggleSelectAll();
   }
   render() {
     var lastNameLetters = new Set(
@@ -46,19 +46,20 @@ export default class AlphabetPicker extends React.Component {
 
     }.bind(this));
 
+    var that = this;
     var selectableContent = this.props.isSelectable ? (
       <span className='ABAlphabetPickerLetter'>
         <input
           type='checkbox'
           onChange={this.onCheckboxClick.bind(this)}
-          checked={this.props.allSelected}
+          checked={this.props.allSelected === true}
         />
       </span>
       ): '';
 
     var cx = classNames('row', 'ABAlphabetPicker');
     return (
-      <div className={cx}>
+      <div className={cx} allSelected={this.props.allSelected}>
         {selectableContent}
         {letters}
       </div>

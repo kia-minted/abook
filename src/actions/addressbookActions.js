@@ -56,7 +56,13 @@ var AddressbookActions = {
       actionType: AddressbookConstants.SEARCH_FOR,
       searchField: searchField
     });
-  }
+  },
+
+  toggleSelectAll: function(){
+    AddressbookDispatcher.handleViewAction({
+      actionType: AddressbookConstants.TOGGLE_SELECT_ALL
+    });
+  },
 };
 
 export default AddressbookActions;

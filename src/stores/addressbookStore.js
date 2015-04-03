@@ -71,12 +71,16 @@ function selectEmail(selectedId){
       return email.id === selectedId;
     })[0];
   _state.selectedAddresses.push(selectedEmail);
+  if(_state.selectedAddresses.length === _state.friendEmails.length){
+    _state.allSelected = true;
+  }
 }
 function deselectEmail(deselectId){
   _state.selectedAddresses = _state.selectedAddresses
     .filter(function(address){
       return address.id !== deselectId;
     });
+  _state.allSelected = false;
 }
 
 function setSortBy(sortBy){

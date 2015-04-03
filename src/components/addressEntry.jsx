@@ -34,7 +34,7 @@ export default class AddressEntry extends React.Component {
     AddressbookActions.addEmail(newEmail);
   }
   render() {
-    var cx = classNames(['DIAddressEntry', 'row']);
+    var cx = classNames(['ABAddressEntry', 'row']);
     var singleEntryCx = classNames(['col-sm-6']);
     var multipleEntryCx = classNames(['col-sm-6']);
     return (

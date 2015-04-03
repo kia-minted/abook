@@ -14,7 +14,6 @@ const propTypes = {
 export default class GuestList extends React.Component {
   constructor(props) {
     super(props);
-    console.log(props);
   }
   editAddress(address, field, value){
     address[field] = value;
@@ -32,15 +31,14 @@ export default class GuestList extends React.Component {
         <p>Select contacts on the left to add them to the list.</p>
       </div>
     );
-    var cx = classNames(['col-sm-6']);
+    var cx = classNames(['ABGuestList', 'col-sm-6']);
     return (
       <div className={cx}>
-        <h4>YOUR GUEST LIST: {' '}
-          <small>
-            {this.props.selectedAddresses.length}
-          </small>
+        <h4>
+          <small>YOUR GUEST LIST {' '}</small>
+          {this.props.selectedAddresses.length}
         </h4>
-        <div>
+        <div className={'ABGuestListEntry'}>
           {guests.length ?
             guests :
             noGuestsMessage

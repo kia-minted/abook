@@ -32,12 +32,13 @@ export default class AlphabetPicker extends React.Component {
       }
       var letterCx = classNames('ABAlphabetPickerLetter');
       return (
-        <a
+        <span
           className={letterCx}
           key={y}
           onClick={this.onLetterClick.bind(this, letter)}
-          children={letter}
-          {...letterProps}/>
+          {...letterProps}>
+          {letter}
+        </span>
       );
 
     }.bind(this));
@@ -56,14 +57,16 @@ AlphabetPicker.letterProperties = {
   enabled: {
     style: {
       fontWeight: 'normal',
-      color: 'black',
+      color: '#8AC007',
+      cursor: 'pointer'
     },
     href: ''
   },
   active: {
     style: {
       fontWeight: 'bolder',
-      color: 'black',
+      color: '#8AC007',
+      cursor: 'pointer'
     },
     href: ''
   },

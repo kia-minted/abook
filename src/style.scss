@@ -1,7 +1,73 @@
 @import "../node_modules/bootstrap-sass/assets/stylesheets/_bootstrap.scss";
 
+$ABGray: #EEEEEE;
+$ABCream: #FCFCFC;
+$ABBrown: #B9B9B9;
+$ABGreen: #8AC007;
+
+$margin: 10px;
+
+
+body {
+  background-color: $ABCream;
+}
+
+.ABAddressEntry {
+  background-color: $ABGray;
+  text-color: $ABBrown;
+}
+
+.ABAddressList {
+  background-color: $ABCream;
+  text-color: $ABBrown;
+  margin-top: $margin;
+}
+
+.ABAddressCounter {
+}
+
+.ABAlphabetPicker {
+  margin-top: $margin;
+  border-bottom: 1px solid black;
+  display: flex;
+}
+
+.ABAlphabetPickerLetter {
+  margin-left:1%;
+  margin-right:1%;
+}
+
+.ABCheckbox {
+  padding-top: 2px;
+  padding-left: 25px;
+}
+
 .ABAddressListFilteredAddresses {
-  border: 1px solid red;
+  background-color:  $ABCream;
   max-height: 500px;
   overflow-y: scroll;
+  overflow-x: hidden;
+}
+
+.ABFriendEmail {
+  border-bottom: 1px solid black;
+  text-align: left;
+  vertical-align: bottom;
+  min-height: 50px;
+  padding-top:10px;
+}
+
+.ABGuestList {
+  margin-top: $margin;
+  background-color: $ABGray;
+  text-color: $ABBrown;
+}
+
+.ABGuestListEntry {
+  background-color: $ABCream;
+}
+
+.ABMoveRight {
+  float: right;
+  margin-right: $margin;
 }

@@ -21,7 +21,10 @@ export default class AddressCounter extends React.Component {
     var cx = classNames(['ABAddressCounter', 'row']);
     return (
       <div className={cx}>
-        <h4>YOUR {addressType} ADDRESSES:{' '}<small>{selectableText}</small></h4>
+        <h4>
+          <small>YOUR {addressType} ADDRESSES{' '}</small>
+          {selectableText}
+        </h4>
       </div>
     );
   }

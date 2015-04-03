@@ -1,4 +1,4 @@
-@import "../node_modules/bootstrap-sass/assets/stylesheets/_bootstrap.scss";
+@import '../node_modules/foundation-scss/foundation/components/_grid.scss';
 
 $ABGray: #EEEEEE;
 $ABCream: #FCFCFC;
@@ -6,7 +6,6 @@ $ABBrown: #B9B9B9;
 $ABGreen: #8AC007;
 
 $margin: 10px;
-
 
 body {
   background-color: $ABCream;
@@ -61,6 +60,7 @@ body {
 }
 
 .ABGuestList {
+  padding: 25px;
   margin-top: $margin;
   background-color: $ABGray;
   text-color: $ABBrown;

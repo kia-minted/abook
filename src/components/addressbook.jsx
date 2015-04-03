@@ -16,7 +16,7 @@ export default class Addressbook extends React.Component {
   }
   render() {
     console.log(this.state);
-    var cx = classNames(['AB', 'container']);
+    var cx = classNames(['AB', 'row']);
     var guestList = this.state.hasGuestList ? (
       <GuestList selectedAddresses={this.state.selectedAddresses}/>
     ) : '';

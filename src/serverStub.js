@@ -2,7 +2,7 @@ var serverData = {
   friendEmails: [
     {
       id: 0,
-      name: 'Kia Fathi',
+      name: '',
       email: 'kia.fathi@minted.com',
       displayName: 'Kia',
       owningUserId: 1

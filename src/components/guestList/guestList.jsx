@@ -31,14 +31,14 @@ export default class GuestList extends React.Component {
         <p>Select contacts on the left to add them to the list.</p>
       </div>
     );
-    var cx = classNames(['ABGuestList', 'col-sm-6']);
+    var cx = classNames(['ABGuestList', 'medium-6', 'column']);
     return (
       <div className={cx}>
         <h4>
           <small>YOUR GUEST LIST {' '}</small>
           {this.props.selectedAddresses.length}
         </h4>
-        <div className={'ABGuestListEntry'}>
+        <div className={'ABGuestListEntry row'}>
           {guests.length ?
             guests :
             noGuestsMessage

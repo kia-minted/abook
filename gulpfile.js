@@ -191,6 +191,7 @@ gulp.task('build-sass:dev', function(){
   gulp.src(paths.sass)
     .pipe(sourcemaps.init())
     .pipe(sass({
+      includePaths: ['./node_modules/foundation-scss/foundation.scss'],
       errLogToConsole: true
     }))
     .pipe(sourcemaps.write())
@@ -237,6 +238,7 @@ gulp.task('watch-and-build-js:dev', function() {
 gulp.task('build-sass:prod', function(){
   gulp.src(paths.sass)
     .pipe(sass({
+      includePaths: ['./node_modules/foundation-scss/foundation.scss'],
       errLogToConsole: true,
       outputStyle: 'compressed'
     }))

@@ -20,16 +20,22 @@ export default class Guest extends React.Component {
   }
   updateGuestDisplayName(e){
     var newName = e.target.value;
-    var email = this.props;
-    AddressbookActions.editEmail(assign(email, {displayName: newName}));
+    var email = assign(this.props, {displayName: newName});
+    AddressbookActions.editEmail(email);
   }
   render(){
     var cx = classNames(['ABGuest', 'row']);
     return (
       <div className={cx}>
-        <div className='col-md-4'>{this.props.name}</div>
-        <div className='col-md-4'>{this.props.email}</div>
-        <div className='col-md-4'>
+        {this.props.name !== '' ? (
+        <div className='medium-6 column'>{this.props.name}</div>
+        ):(
+        <div className='medium-6 column'>
+          <p>{this.props.email}</p>
+          <p>Add a name!</p>
+        </div>
+        )}
+        <div className='medium-4 column'>
           <input type='text'
             onChange={this.updateGuestDisplayName.bind(this)}
             value={this.props.displayName}/>

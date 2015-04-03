@@ -100,7 +100,7 @@ export default class AddressList extends React.Component {
       );
     }
 
-    var cx = classNames(['ABAddressList', 'col-sm-6']);
+    var cx = classNames(['ABAddressList', 'medium-6', 'column']);
     var filteredAddressesCx = classNames(['ABAddressListFilteredAddresses', 'row']);
     return (
       <div className={cx}>

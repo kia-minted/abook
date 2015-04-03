@@ -35,8 +35,8 @@ export default class AddressEntry extends React.Component {
   }
   render() {
     var cx = classNames(['ABAddressEntry', 'row']);
-    var singleEntryCx = classNames(['col-sm-6']);
-    var multipleEntryCx = classNames(['col-sm-6']);
+    var singleEntryCx = classNames(['medium-6', 'column']);
+    var multipleEntryCx = classNames(['medium-6', 'column']);
     return (
       <div className={cx}>
         <div className={singleEntryCx}>

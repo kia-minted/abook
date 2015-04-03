@@ -18,6 +18,7 @@ var propTypes = {
   selectedAddresses: React.PropTypes.array,
   sortBy: React.PropTypes.string.isRequired,
   searchField: React.PropTypes.string.isRequired,
+  allSelected: React.PropTypes.bool,
 };
 
 var defaultProps = {
@@ -106,6 +107,8 @@ export default class AddressList extends React.Component {
         <AddressCounter displayAddresses={displayAddresses} {...this.props}/>
         <SearchBar sortBy={this.props.sortBy}/>
         <AlphabetPicker
+          allSelected={this.props.allSelected}
+          isSelectable={this.props.isSelectable}
           displayAddresses={displayAddresses}
           filterMatch={this.props.filterMatch}/>
         <div className={filteredAddressesCx}>

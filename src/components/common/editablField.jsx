@@ -11,7 +11,7 @@ export default class EditableField extends React.Component {
     return (
       <input
         type='text'
-        placeholder={toProperCase(this.props.field)}
+        placeholder={this.props.placeholder || toProperCase(this.props.field)}
         onChange={this.updateValue.bind(this)}
         value={this.props.value}
       />
@@ -22,5 +22,6 @@ export default class EditableField extends React.Component {
 EditableField.propTypes = {
   field: React.PropTypes.string.isRequired,
   value: React.PropTypes.string.isRequired,
-  update: React.PropTypes.func.isRequired
+  update: React.PropTypes.func.isRequired,
+  placeholder: React.PropTypes.string
 };

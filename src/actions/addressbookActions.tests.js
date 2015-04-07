@@ -190,6 +190,20 @@ describe('addressbookActions', function(){
     });
   });
 
+  describe('toggleSelectAll', function(){
+    it('should be a function', function(){
+      expect(module.toggleSelectAll).to.be.a('function');
+    });
+
+    it('should trigger a dispatch with the correct arguments', function(){
+      module.toggleSelectAll();
+      expect(viewActionSpy.calledOnce).to.equal(true);
+      expect(viewActionSpy.calledWith({
+        actionType: AddressbookConstants.TOGGLE_SELECT_ALL
+      })).to.equal(true);
+    });
+  });
+
   afterEach(function(){
     AddressbookDispatcher.handleServerAction.restore();
     AddressbookDispatcher.handleViewAction.restore();

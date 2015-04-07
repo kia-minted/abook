@@ -21,7 +21,8 @@
     "flux": "^2.0.1",
     "foundation-scss": "^5.5.0",
     "object-assign": "^2.0.0",
-    "react": "^0.13.1"
+    "react": "^0.13.1",
+    "superagent": "^1.1.0"
   },
   "devDependencies": {
     "babel-core": "^4.7.8",
